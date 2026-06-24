@@ -1,6 +1,19 @@
+import json
 lista_usuarios = []
+RUTA_JSON = "usuarios.json"
 
 #------------validadores------------
+
+
+#validar nombre no puede ser vacío
+
+def validar_nombre(nombre):
+    if len(nombre.strip()) > 0:
+        print("nombre agregado")
+        return True
+    else:
+        print("nombre no puede estar vacío")
+        return False
 
 #hay que validar sexo 
 def validar_sexo(sexo):
@@ -26,23 +39,39 @@ def validar_password(password):
     
     return True
     
-    
+
+#-------JSON-----------
+usuario = {
+    "nombre" : nombre,
+    "sexo" : sexo,
+    "password" : password
+}
+
+#-----------FUNCIONES TRANSACCIONALES -------------------
 # validar que nombre no se repita (revisar lista ya existente)
 
+def agregar_usuario(usuario):
+    nombre = str(input("Ingrese nombre: ")).strip().upper()
+    while not validar_nombre(nombre):
+        nombre = str(input("Ingrese nombre: ")).strip().upper()
 
 
 
+
+#-----------IMPRIMIR USUARIO---------------
 
 def imprimir_usuario(usuario):
     print(f"""
 -------------USUARIO------------
 Nombre de usuario: {usuario["nombre"]}
+Sexo: {usuario["sexo"]}
+Contraseña: {usuario["password"]}
+""").strip().upper()
+    
+    
+    
+    
 
-          
-          
-          
-          
-          """).strip().upper()
 
 
 
